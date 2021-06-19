@@ -1,17 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import validator from 'validator';
+
 import { useForm } from '../../hooks/useForm';
 
+
 export const RegisterScreen = () => {
+
 
   const [ formValues, handleInputChange] = useForm({ 
       name: 'giobanny',
       email: 'nando2@gmail.com',
       password: '123456',
-      passsword2:'123456'
+      password2:'123456'
   })
 
-  const { name,email,password, passsword2 } = formValues;
+  const { name,email,password, password2 } = formValues;
 
   const handleRegister = (e) => {
       e.preventDefault();
@@ -23,6 +27,18 @@ export const RegisterScreen = () => {
   }
 
   const isFormValid =() =>{
+    if(name.trim().length === 0) {
+        console.log('Name is required');
+        return false;
+    }else if ( !validator.isEmail(email ) ){
+        console.log('email is not valid')
+        return  false;
+    }else if ( password !== password2 || password.length < 5){
+        console.log('Password should be at least 6 characters and match each other');
+        return false;
+    }
+
+      return true;
 
   }
 
@@ -33,6 +49,11 @@ export const RegisterScreen = () => {
         <h3 className ="auth__title">Register</h3>
 
         <form onSubmit ={handleRegister}>
+            <div className="auth__alert-error">
+                Hola Mundo
+
+            </div>
+
 
             <input
                 type="text"
@@ -68,7 +89,7 @@ export const RegisterScreen = () => {
                 placeholder ="Confirm Passsword"
                 name="password2"
                 className="auth__input"
-                value={passsword2}
+                value={password2}
                 onChange={handleInputChange}
             />
 
