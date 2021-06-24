@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
     BrowserRouter as Router,
@@ -19,6 +19,9 @@ export const AppRouter = () => {
     const dispatch = useDispatch();
 
 
+    const [checking, setChecking] = useState(true);
+
+
     useEffect(() => {
 
         firebase.auth().onAuthStateChanged( (user) =>{
@@ -27,9 +30,16 @@ export const AppRouter = () => {
                 dispatch(login(user.uid, user.displayName));
 
             }
+            setChecking(false);
         });
     
-    },[dispatch])
+    },[dispatch,setChecking])
+
+    if( checking ) {
+        return (
+            <h1>Espera...</h1>
+        )
+    }
 
 
 
