@@ -20,6 +20,7 @@ export const AppRouter = () => {
 
 
     const [checking, setChecking] = useState(true);
+    const [ isLoggedIn, setisLoggedIn ] = useState(false);
 
 
     useEffect(() => {
@@ -28,12 +29,15 @@ export const AppRouter = () => {
 
             if(user?.uid){
                 dispatch(login(user.uid, user.displayName));
+                setisLoggedIn (true);
 
+            }else{
+                setisLoggedIn(false);
             }
             setChecking(false);
         });
     
-    },[dispatch,setChecking])
+    },[dispatch,setChecking, setisLoggedIn])
 
     if( checking ) {
         return (
