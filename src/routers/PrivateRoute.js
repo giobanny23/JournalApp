@@ -10,7 +10,7 @@ export const PrivateRoute = ({
     ...rest
 }) => {
     
-  console.log(isAuthenticated);
+  
 
     return (
         <Route { ...rest }
