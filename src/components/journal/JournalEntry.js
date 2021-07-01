@@ -1,25 +1,38 @@
 import React from 'react'
+//import moment from 'moment';
 
-export const JournalEntry = () => {
+export const JournalEntry = ({id, date, title, body,url}) => {
+
+   
+    //const noteDate = moment(date);
+    //console.log(noteDate);
+
+
     return (
-        <div className ="journal__entry pointer">
-            <div 
-            className="journal__entry-picture"
-            style={{
-                backgroundZise:'cover',
-                backgroundImage:'url(https://www.fonditos3d.com/800x600/paisaje-nocturno-con-efectos-3d.jpg)'
 
-            }}
-            >
-            </div>
+        <div className ="journal__entry pointer">
+
+            {
+
+                url &&                
+                <div 
+                className="journal__entry-picture"
+                style={{
+                    backgroundZise:'cover',
+                    backgroundImage:`url( ${ url } )`
+                    
+                }}
+                ></div>
+
+            }
+
 
             <div className="journal__entry-body">
                 <p className="journal__entry-title"> 
-                Un nuevo Dia
+                    {title}
                 </p>
                 <p className="journal__entry-content">
-                Lorem Ipsum es simplemente el texto de relleno 
-                 
+                    {body}
                 </p>
 
             </div>

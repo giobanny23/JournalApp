@@ -17,7 +17,9 @@ import {PublicRoute } from './PublicRoute';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { login } from '../actions/auth';
 
-import {  startLoadingNotes } from '../actions/notes';
+import { startLoadingNotes } from '../actions/notes';
+
+
 
 export const AppRouter = () => {
 
@@ -30,12 +32,12 @@ export const AppRouter = () => {
 
     useEffect(() => {
 
-        firebase.auth().onAuthStateChanged( async(user) =>{
+        firebase.auth().onAuthStateChanged((user) =>{
 
             if(user?.uid){
                 dispatch(login(user.uid, user.displayName));
                 setisLoggedIn (true);
-               dispatch(startLoadingNotes(user.uid));
+                dispatch(startLoadingNotes(user.uid));
 
             }else{
                 setisLoggedIn(false);
