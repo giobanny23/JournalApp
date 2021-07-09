@@ -4,7 +4,7 @@ import { db } from "../firebase/firebase-config";
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from '../types/types';
 
-
+//react-journal
 
 
 export const startNewNote = ( ) =>{
@@ -82,4 +82,14 @@ export const refresNote = (id, note) =>({
             ...note
         }
     }
-})
+});
+
+export const starUploading = (file) => {
+    return(dispatch, getState) => {
+        
+        const{ative:activeNote} = getState().notes;
+
+        console.log(file);
+        console.log(activeNote);
+    }
+}
