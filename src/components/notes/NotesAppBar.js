@@ -34,7 +34,7 @@ export const NotesAppBar = () => {
                 type="file"
                 name ="file"
                 style= {{display:'none'}}
-                onClick={handleFileChange}
+                onChange={handleFileChange}
             />
             
             <div    >

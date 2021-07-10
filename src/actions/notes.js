@@ -1,8 +1,8 @@
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
-import { db } from "../firebase/firebase-config";
-import { fileUpload } from "../helpers/fileUpload";
-import { loadNotes } from "../helpers/loadNotes";
+import { db } from '../firebase/firebase-config';
+import { fileUpload } from '../helpers/fileUpload';
+import { loadNotes } from '../helpers/loadNotes';
 import { types } from '../types/types';
 
 //react-journal
@@ -88,11 +88,24 @@ export const refresNote = (id, note) =>({
 export const starUploading = (file) => {
     return async(dispatch, getState) => {
         
-        const{ative:activeNote} = getState().notes;
+        const { active:activeNote } = getState().notes;
+
+        Swal.fire({
+            title: 'Uploading...',
+            text:'Please wait...',
+            allowOutsideClick: false,
+            preConfirm: () =>{
+                Swal.showLoading();
+            }
+        })
 
         const fileUrl = await fileUpload(file);
+        activeNote.url = fileUrl;
+        dispatch( startSaveNote( activeNote ) )
 
-        console.log(fileUrl);
+        console.log(fileUrl)
+
+        Swal.close();
        //?
     }
 }
