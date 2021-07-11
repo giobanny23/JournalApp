@@ -8,7 +8,7 @@ export const JournalEntry = ({id, date, title, body,url}) => {
     
     
     const noteDate = moment(date);
-    const  dispatch = useDispatch()
+    const  dispatch = useDispatch();
    
     const handleEntryClick = () =>{
         dispatch(
