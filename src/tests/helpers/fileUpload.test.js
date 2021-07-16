@@ -14,6 +14,15 @@ describe('Pruebas en fileUpload',() => {
 
         expect( typeof url ).toBe('string');
     })
+
+
+    test('debe retornar un error', async() => {
+
+        const file = new File([], 'foto.jpg' );
+        const url = await fileUpload( file );
+
+        expect(url ).toBe( null );
+    })
     
     
 })
