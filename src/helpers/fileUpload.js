@@ -1,6 +1,6 @@
 
 
-export const fileUpload = async ( file) =>{
+export const fileUpload = async( file) =>{
 
     const cloudUrl = ' https://api.cloudinary.com/v1_1/giobanny23/upload';
 
@@ -9,11 +9,11 @@ export const fileUpload = async ( file) =>{
     formData.append('file', file);
 
     try{
-        const resp = await fetch(cloudUrl,{
+        const resp = await fetch(cloudUrl, {
             method: 'POST',
             body: formData
         });
-        if(resp.ok){
+        if( resp.ok ){
             const cloudResp = await resp.json();
             return cloudResp.secure_url;
         }else {
