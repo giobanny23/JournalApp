@@ -2,7 +2,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 
-import { startNewNote } from '../../actions/notes';
+import { startLoadingNotes, startNewNote } from '../../actions/notes';
 import { db } from '../../firebase/firebase-config';
 import { types } from '../../types/types';
 
@@ -54,5 +54,26 @@ describe('Pruebas con las acciones de notes', () => {
         const docId = actions[0].payload.id;
         await db.doc(`/TESTING/journal/notes/${docId}`).delete();
     })
+
+
+    // test('starLoadingNotes debe cargar las notas', async() => {
+        
+    //     await store.dispatch( startLoadingNotes('TESTING'));
+
+    //     const actions = store.getActions();
+
+    //     console.log(actions);
+
+    //     expect(actions[0]).toEqual({
+    //         type:types.notesActive,
+    //         payload:{
+    //             id:expect.any(String),
+    //             title:'',
+    //             body:'',
+    //             date: expect.any(Number)
+    //         }
+    //     });
+    })
     
-})
+    
+

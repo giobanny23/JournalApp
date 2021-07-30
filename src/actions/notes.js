@@ -115,7 +115,7 @@ export const starUploading = (file) => {
         activeNote.url = fileUrl;
         dispatch( startSaveNote( activeNote ) )
 
-        console.log(fileUrl)
+        //console.log(fileUrl)
 
         Swal.close();
        //?
